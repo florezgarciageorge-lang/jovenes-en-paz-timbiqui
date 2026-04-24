@@ -619,6 +619,82 @@
     font-size:1.4rem;cursor:pointer;line-height:1;
   }
 
+  .linea-ver {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--pink);
+    letter-spacing: 0.05em;
+  }
+
+  /* Panel admin oculto */
+  .admin-panel {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    z-index: 300;
+  }
+
+  .admin-toggle {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--pink);
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(233,30,140,0.35);
+    transition: transform 0.2s;
+  }
+
+  .admin-toggle:hover { transform: scale(1.1); }
+
+  .admin-login {
+    position: absolute;
+    bottom: 60px; right: 0;
+    background: white;
+    border: 2px solid var(--pink-light);
+    border-radius: 16px;
+    padding: 1.2rem;
+    width: 220px;
+    box-shadow: 0 8px 30px rgba(233,30,140,0.15);
+    display: none;
+  }
+
+  .admin-login.open { display: block; }
+
+  .admin-login p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+  }
+
+  .admin-login input {
+    width: 100%;
+    border: 2px solid #F3E8F0;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+    outline: none;
+  }
+
+  .admin-login input:focus { border-color: var(--pink); }
+
+  .admin-login button {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--pink);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
   /* ── ANIMACIONES ── */
   @keyframes fadeUp {
     from{opacity:0;transform:translateY(28px);}
@@ -777,49 +853,54 @@
 
     <div class="lineas-grid">
 
-      <div class="linea-card" data-l="1">
+      <div class="linea-card" data-l="1" onclick="irAActividades('1')" style="cursor:pointer;">
         <div class="linea-top">
           <div class="linea-icon-wrap">🏘️</div>
           <span class="linea-num-badge">Línea 01</span>
         </div>
         <h3 class="linea-name">Territorio y Convivencia</h3>
         <p class="linea-desc">Fortalecimiento de los lazos comunitarios, resolución pacífica de conflictos y apropiación del territorio como espacio de encuentro, diálogo y construcción de paz.</p>
+        <div class="linea-ver">Ver actividades →</div>
       </div>
 
-      <div class="linea-card" data-l="2">
+      <div class="linea-card" data-l="2" onclick="irAActividades('2')" style="cursor:pointer;">
         <div class="linea-top">
           <div class="linea-icon-wrap">🎭</div>
           <span class="linea-num-badge">Línea 02</span>
         </div>
         <h3 class="linea-name">Identidad y Tradición</h3>
         <p class="linea-desc">Recuperación y celebración de las expresiones culturales, artísticas y ancestrales del Pacífico como herramienta de construcción de identidad juvenil y comunitaria.</p>
+        <div class="linea-ver">Ver actividades →</div>
       </div>
 
-      <div class="linea-card" data-l="3">
+      <div class="linea-card" data-l="3" onclick="irAActividades('3')" style="cursor:pointer;">
         <div class="linea-top">
           <div class="linea-icon-wrap">🔨</div>
           <span class="linea-num-badge">Línea 03</span>
         </div>
         <h3 class="linea-name">Manos a la Obra por la Comunidad</h3>
         <p class="linea-desc">Acciones prácticas de mejoramiento del entorno comunitario, bienestar colectivo y desarrollo social lideradas directamente por los jóvenes del programa.</p>
+        <div class="linea-ver">Ver actividades →</div>
       </div>
 
-      <div class="linea-card" data-l="4">
+      <div class="linea-card" data-l="4" onclick="irAActividades('4')" style="cursor:pointer;">
         <div class="linea-top">
           <div class="linea-icon-wrap">🌿</div>
           <span class="linea-num-badge">Línea 04</span>
         </div>
         <h3 class="linea-name">Guardianes del Entorno</h3>
         <p class="linea-desc">Cuidado, conservación y defensa del medio ambiente y los ecosistemas del territorio, desde una mirada juvenil comprometida con el futuro de Timbiquí.</p>
+        <div class="linea-ver">Ver actividades →</div>
       </div>
 
-      <div class="linea-card" data-l="5">
+      <div class="linea-card" data-l="5" onclick="irAActividades('5')" style="cursor:pointer;">
         <div class="linea-top">
           <div class="linea-icon-wrap">⚡</div>
           <span class="linea-num-badge">Línea 05</span>
         </div>
         <h3 class="linea-name">Energía y Movimiento</h3>
         <p class="linea-desc">El deporte, la actividad física y el juego como espacios de integración, salud mental y construcción de paz entre jóvenes y la comunidad en general.</p>
+        <div class="linea-ver">Ver actividades →</div>
       </div>
 
     </div>
@@ -836,11 +917,11 @@
       </div>
       <div class="filtros">
         <button class="filtro-btn active" onclick="filtrar('todas',this)">Todas</button>
-        <button class="filtro-btn" onclick="filtrar('1',this)">Territorio</button>
-        <button class="filtro-btn" onclick="filtrar('2',this)">Identidad</button>
-        <button class="filtro-btn" onclick="filtrar('3',this)">Manos a la obra</button>
-        <button class="filtro-btn" onclick="filtrar('4',this)">Guardianes</button>
-        <button class="filtro-btn" onclick="filtrar('5',this)">Energía</button>
+        <button class="filtro-btn" data-linea="1" onclick="filtrar('1',this)">Territorio</button>
+        <button class="filtro-btn" data-linea="2" onclick="filtrar('2',this)">Identidad</button>
+        <button class="filtro-btn" data-linea="3" onclick="filtrar('3',this)">Manos a la obra</button>
+        <button class="filtro-btn" data-linea="4" onclick="filtrar('4',this)">Guardianes</button>
+        <button class="filtro-btn" data-linea="5" onclick="filtrar('5',this)">Energía</button>
       </div>
     </div>
 
@@ -864,8 +945,8 @@
         </div>
       </div>
 
-      <!-- PLACEHOLDER actividad futura -->
-      <div class="add-card" onclick="document.getElementById('modal').classList.add('open')">
+      <!-- Botón admin oculto -->
+      <div class="add-card" id="add-btn" style="display:none;" onclick="document.getElementById('modal').classList.add('open')">
         <div class="add-icon">+</div>
         <p>Registrar nueva actividad</p>
       </div>
@@ -976,6 +1057,16 @@
   </div>
 </div>
 
+<!-- Panel Admin flotante -->
+<div class="admin-panel">
+  <button class="admin-toggle" onclick="toggleAdmin()" title="Administrador">🔐</button>
+  <div class="admin-login" id="admin-login">
+    <p>Acceso administrador</p>
+    <input type="password" id="admin-pass" placeholder="Contraseña" onkeydown="if(event.key==='Enter')verificarClave()">
+    <button onclick="verificarClave()">Entrar</button>
+  </div>
+</div>
+
 <script>
 function filtrar(linea, btn) {
   document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
@@ -988,6 +1079,33 @@ function filtrar(linea, btn) {
 document.getElementById('modal').addEventListener('click', function(e) {
   if (e.target === this) this.classList.remove('open');
 });
+
+// Ir a actividades filtradas por línea
+function irAActividades(linea) {
+  document.getElementById('actividades').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    const btn = document.querySelector(`.filtro-btn[data-linea="${linea}"]`);
+    if (btn) btn.click();
+  }, 600);
+}
+
+// Admin panel
+function toggleAdmin() {
+  document.getElementById('admin-login').classList.toggle('open');
+}
+
+function verificarClave() {
+  const pass = document.getElementById('admin-pass').value;
+  if (pass === 'JEP2025') {
+    document.getElementById('add-btn').style.display = 'flex';
+    document.getElementById('admin-login').classList.remove('open');
+    document.getElementById('admin-pass').value = '';
+    document.getElementById('actividades').scrollIntoView({ behavior: 'smooth' });
+  } else {
+    document.getElementById('admin-pass').style.borderColor = 'red';
+    setTimeout(() => document.getElementById('admin-pass').style.borderColor = '', 1500);
+  }
+}
 
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
